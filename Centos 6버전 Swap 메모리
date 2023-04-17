@@ -1,0 +1,27 @@
+# swap-
+Centos 6버전 swap 메모리 설정
+
+1. free -h 로 swap 메모리 설정 확인
+  total       used       free     shared    buffers     cached
+Mem:          9746       7383       2362       5659        147       6036
+-/+ buffers/cache:       1200       8545
+Swap:            0          0          0
+
+
+2. Swap 파일 생성(4GB)
+
+[root@ns2 ~]# dd if=/dev/zero of=/home/swapfile bs=1M count=18432
+
+서버관리 - CentOS : Swap 메모리 늘리는 방법/ Swap 추가 및 제거 : swap 파일 생성.JPG 
+
+  991  2023-04-17_17:41:00:mkswap /home/swapfile
+
+
+  993  2023-04-17_17:41:51:sudo swapon /home/swapfile
+ 
+ 
+  995  2023-04-17_17:41:57:free -g
+  996  2023-04-17_17:42:09:vi /etc/fstab
+ 
+/swapfile               none                    swap    sw              0 0
+
